@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zostałeś zhakowany!</title>
+    <style>
+        body {
+            background-color: black;
+            color: green;
+            font-family: 'Courier New', Courier, monospace;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        #warning {
+            color: red;
+            text-align: center;
+            font-size: 36px;
+            margin-top: 20px;
+        }
+
+        #scrolling {
+            position: absolute;
+            white-space: nowrap;
+            animation: scrolling 10s linear infinite;
+            font-size: 14px;
+        }
+
+        @keyframes scrolling {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+    </style>
+</head>
+<body>
+    <div id="warning">Zostałeś zhakowany! Zapłać 100 zł Blikiem, aby odzyskać dane! </div>
+    <div id="scrolling">
+        <pre>
+            &gt; Uploading sensitive data... [DONE]
+            &gt; Encrypting files... [SUCCESS]
+            &gt; Sending data to server... [FAILED]
+            &gt; Retrying... [IN PROGRESS]
+            &gt; zapłać mi to nic sie nie stanie!
+        </pre>
+    </div>
+    <script>
+        // Funkcja nieskończonych alertów
+        function showAlert() {
+            alert("Zostałeś zhakowany! Zamknij wirusa, jeśli potrafisz!");
+            setTimeout(showAlert, 500); // Powtarza alert co 500 ms
+        }
+        window.onload = showAlert;
+
+        // Dodaje losowe efekty znaków w tle
+        setInterval(() => {
+            const char = String.fromCharCode(33 + Math.random() * 94);
+            const span = document.createElement('span');
+            span.textContent = char;
+            span.style.position = 'absolute';
+            span.style.color = 'lime';
+            span.style.left = Math.random() * window.innerWidth + 'px';
+            span.style.top = Math.random() * window.innerHeight + 'px';
+            span.style.fontSize = Math.random() * 20 + 10 + 'px';
+            document.body.appendChild(span);
+
+            setTimeout(() => span.remove(), 1000);
+        }, 50);
+    </script>
+</body>
+</html>
